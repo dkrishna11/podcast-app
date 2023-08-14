@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import InputComponent from "../../common/Input";
 import Button from "../../common/Button";
-import { auth, db, storage } from "../../../fireBase";
+import { auth, db } from "../../../fireBase";
 import { signInWithEmailAndPassword } from "firebase/auth";
 import { getDoc, doc } from "firebase/firestore";
 import { useDispatch } from "react-redux";
