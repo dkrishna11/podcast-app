@@ -4,10 +4,12 @@
     padding: 1rem;
     border-radius: 0.35rem;
     cursor: pointer;
-    width: 57vw;
+    width: 70%;
     margin: 1rem;
     font-size: 1rem;
     font-weight: 500;
+    margin: auto;
+    margin-top: 10px;
 }
 
 .custom-button:hover{

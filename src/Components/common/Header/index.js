@@ -9,8 +9,8 @@ const Header=()=>{
             <div className="gradient"></div>
             <div className="links">
             <NavLink to="/">SignUp</NavLink>
-            <NavLink to="/podcasts">Podcasts</NavLink>
-            <NavLink to="/start-a-podcast">Start A Podcast</NavLink>
+            <NavLink to="/podcast">Podcasts</NavLink>
+            <NavLink to="/create-a-podcast">Start A Podcast</NavLink>
             <NavLink to="/profile">Profile</NavLink>
            </div>
         </div>
