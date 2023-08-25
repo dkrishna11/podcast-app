@@ -30,7 +30,7 @@ const PodCastPage = () => {
       unsubcribe();
     };
   }, [dispatch]);
-  
+
   var filteredPodcasts = podcasts.filter((item) =>
     item.title.trim().toLowerCase().includes(search.trim().toLowerCase())
   );
