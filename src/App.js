@@ -12,40 +12,43 @@ import { setUser } from "./slices/userSlices";
 import { useDispatch } from "react-redux";
 import PrivateRoutes from "./Components/common/PrivateRoutes";
 import CreateAPodCastPage from "./Pages/CreateAPodCastPage";
-import PodCastPage from "./Pages/PodCastPage"
-import PodcastDetails from "./Pages/PodcastDetails" 
+import PodCastPage from "./Pages/PodCastPage";
+import PodcastDetails from "./Pages/PodcastDetails";
+import CreateAnEpisode from "./Pages/CreateAnEpisode";
 
 function App() {
-  const dispatch=useDispatch();
-  useEffect(()=>{
-    const unsubcribeAuth=onAuthStateChanged(auth, (user)=>{
-      if(user){
-        const unsubcribeSnapshot=onSnapshot(
+  const dispatch = useDispatch();
+  useEffect(() => {
+    const unsubcribeAuth = onAuthStateChanged(auth, (user) => {
+      if (user) {
+        const unsubcribeSnapshot = onSnapshot(
           doc(db, "users", user.uid),
-          (userDoc)=>{
-            if(userDoc.exists()){
-              const userData=userDoc.data();
-              dispatch(setUser({
-                name:userData.name,
-                email:userData.email,
-                uid:user.uid,
-                profilePic:userData.profilePic,
-              }))
+          (userDoc) => {
+            if (userDoc.exists()) {
+              const userData = userDoc.data();
+              dispatch(
+                setUser({
+                  name: userData.name,
+                  email: userData.email,
+                  uid: user.uid,
+                  profilePic: userData.profilePic,
+                })
+              );
             }
           },
-          (error)=>{
-            console.log("Error fetching user Data: ", error)
+          (error) => {
+            console.log("Error fetching user Data: ", error);
           }
         );
-        return()=>{
+        return () => {
           unsubcribeSnapshot();
-        }
+        };
       }
-    })
-    return ()=>{
+    });
+    return () => {
       unsubcribeAuth();
-    }
-  }, [])
+    };
+  }, []);
   return (
     <div className="App">
       <ToastContainer />
@@ -53,11 +56,15 @@ function App() {
         <Routes>
           <Route path="/" element={<SignUp />} />
 
-          <Route element={<PrivateRoutes/>}>
-          <Route path="/profile" element={<Profile />}/>
-          <Route path='/create-a-podcast' element={<CreateAPodCastPage/>}/>
-          <Route path='/podcast' element={<PodCastPage/>}/>
-          <Route path='/podcast/:id' element={<PodcastDetails/>}/>
+          <Route element={<PrivateRoutes />}>
+            <Route path="/profile" element={<Profile />} />
+            <Route path="/create-a-podcast" element={<CreateAPodCastPage />} />
+            <Route path="/podcast" element={<PodCastPage />} />
+            <Route path="/podcast/:id" element={<PodcastDetails />} />
+            <Route
+              path="/podcast/:id/create-episode"
+              element={<CreateAnEpisode />}
+            />
           </Route>
           {/*           
             <Route path='/create-podcast' element={<CreatePodcast/>}/>

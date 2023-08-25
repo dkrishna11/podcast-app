@@ -38,7 +38,7 @@ a{
 .input-wrapper h1{
   font-size: 1.5rem;
   font-weight: 500;
-  margin-bottom: 2rem;
+  margin-bottom: 1rem;
 }
 
 .podcasts-flex{
@@ -71,4 +71,9 @@ a{
   color: var(--purple-grey);
   text-align: left !important;
   width: 100%;
+}
+
+.epidose-button{
+  position: relative;
+  left: 0;
 }
